@@ -1,8 +1,14 @@
 import { Link } from "react-router-dom";
 import Logo from "../Logo/Logo";
 import Shop2Icon from "@mui/icons-material/Shop2";
+import useAuth from "../../hooks/useAuth";
 const Nav = () => {
-  const user = 0;
+  const { user, LogOut } = useAuth();
+  console.log(user?.photoURL);
+
+  const handleLogOut = () => {
+    LogOut();
+  };
   return (
     <div className="navbar bg-base-100">
       {/* responsive */}
@@ -62,7 +68,7 @@ const Nav = () => {
             <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
               {user ? (
                 <div className="w-10 rounded-full ">
-                  <img src={user.photoURL} alt="" />
+                  <img src={user?.photoURL} alt="" />
                 </div>
               ) : (
                 <div className="w-10 rounded-full border-none">
@@ -98,14 +104,20 @@ const Nav = () => {
                     <span className="-mt-[3px] ">DashBoard</span>
                   </button>
                 </Link>
-                {/* {user && (
+                {user ? (
                   <button
                     onClick={handleLogOut}
                     className="block px-4 py-3 text-[15px] text-black  hover:bg-blue-300/70 rounded-xl mt-1"
                   >
                     Sign Out
                   </button>
-                )} */}
+                ) : (
+                  <Link to="/login">
+                    <button className="block px-4 py-3 text-[15px] text-black  hover:bg-blue-300/70 rounded-xl mt-1">
+                      Login
+                    </button>
+                  </Link>
+                )}
               </div>
             </ul>
           </div>
