@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import Logo from "../Logo/Logo";
-
-import { FaCartArrowDown } from "react-icons/fa";
+import Shop2Icon from "@mui/icons-material/Shop2";
 const Nav = () => {
   const user = 0;
   return (
@@ -94,7 +93,7 @@ const Nav = () => {
                 <Link>
                   <button className="flex px-4 py-3 text-[15px] text-black  hover:bg-blue-300/70 rounded-xl mt-1">
                     <span className="mr-2">
-                      <FaCartArrowDown />
+                      <Shop2Icon />
                     </span>
                     <span className="-mt-[3px] ">DashBoard</span>
                   </button>

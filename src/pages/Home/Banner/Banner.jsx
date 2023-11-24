@@ -12,7 +12,6 @@ const Banner = () => {
       <div>
         <img src="https://www.advanceitbd.com/wp-content/uploads/2020/04/online-courses.jpg" />
       </div>
-      <h1>hello</h1>
     </Carousel>
   );
 };
