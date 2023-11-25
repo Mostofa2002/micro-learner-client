@@ -2,10 +2,13 @@ import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { useForm } from "react-hook-form";
 import useAuth from "../../hooks/useAuth";
+import useAxiosPublic from "./../../hooks/useAxiosPublic";
+import Google from "../shared/Google/Google";
 
 const Register = () => {
   const navigate = useNavigate();
   const { createUser, updateUserProfile } = useAuth();
+  const axiosPublic = useAxiosPublic();
   const {
     register,
     handleSubmit,
@@ -19,15 +22,26 @@ const Register = () => {
       console.log(loggedUser);
       updateUserProfile(data.name, data.photoURL)
         .then(() => {
-          console.log("user profile info updated");
-          reset();
-          Swal.fire({
-            title: "Wow!",
-            text: "Sign Up Successfully",
-            icon: "success",
-            confirmButtonText: "Okay",
+          // create a new user to database
+          const userInfo = {
+            name: data.name,
+            email: data.email,
+            image: data.photoURL,
+          };
+          console.log(userInfo);
+          axiosPublic.post("/users", userInfo).then((res) => {
+            if (res.data.insertedId) {
+              console.log("user created successfully");
+              reset();
+              Swal.fire({
+                title: "Wow!",
+                text: "Sign Up Successfully",
+                icon: "success",
+                confirmButtonText: "Okay",
+              });
+              navigate("/");
+            }
           });
-          navigate("/");
         })
         .catch((error) => console.log(error));
     });
@@ -135,7 +149,7 @@ const Register = () => {
             </button>
           </div>
         </form>
-
+        <Google />
         <Link to="/login">
           <p className="mt-4 text-lg text-center font-light  text-gray-600">
             Already have an account?

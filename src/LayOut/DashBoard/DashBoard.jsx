@@ -2,15 +2,22 @@ import { NavLink, Outlet } from "react-router-dom";
 
 const DashBoard = () => {
   return (
-    <div className="flex container mx-auto">
-      <div className="w-64 bg-red-400 min-h-full">
-        <ul className="menu">
+    <div className="flex container mx-auto ">
+      <div className="lg:w-64 bg-red-400 min-h-screen">
+        <ul className="menu text-white">
           <li>
             <NavLink to="/dashboard/teacher">Teacher Request</NavLink>
           </li>
           <li>
-            <NavLink to="/dashboard/user">Users</NavLink>
+            <NavLink to="/dashboard/user"> All Users</NavLink>
           </li>
+          <li>
+            <NavLink to="/dashboard/profile">Profile</NavLink>
+          </li>
+          <li>
+            <NavLink to="/dashboard/profile">All Classes</NavLink>
+          </li>
+          <div className="divider">OR</div>
           <li>
             <NavLink to="/">Home</NavLink>
           </li>
