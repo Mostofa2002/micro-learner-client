@@ -40,9 +40,11 @@ const Nav = () => {
             <li>
               <a>All Classes</a>
             </li>
-            <li>
-              <a>Teach On Micro</a>
-            </li>
+            <Link to="/teach">
+              <li>
+                <a>Teach On Micro</a>
+              </li>
+            </Link>
           </ul>
         </div>
         <Logo />
@@ -56,9 +58,11 @@ const Nav = () => {
           <li>
             <a>All Classes</a>
           </li>
-          <li>
-            <a>Teach On Micro</a>
-          </li>
+          <Link to="/teach">
+            <li>
+              <a>Teach On Micro</a>
+            </li>
+          </Link>
         </ul>
       </div>
 
@@ -96,7 +100,7 @@ const Nav = () => {
 
                 <hr className="border-gray-200 " />
 
-                <Link>
+                <Link to="/dashboard/teacher">
                   <button className="flex px-4 py-3 text-[15px] text-black  hover:bg-blue-300/70 rounded-xl mt-1">
                     <span className="mr-2">
                       <Shop2Icon />

@@ -3,6 +3,12 @@ import Main from "../LayOut/Main/Main";
 import Home from "../pages/Home/Home";
 import Login from "../pages/Login/Login";
 import Register from "./../pages/Register/Register";
+import TeachOnMicro from "./../pages/TeachOnMicro/TeachOnMicro";
+import Private from "./../private/Private";
+import DashBoard from "./../LayOut/DashBoard/DashBoard";
+import TeacherRequest from "../pages/DashBoard/Teacher/TeacherRequest";
+import Users from "./../pages/DashBoard/User/Users";
+
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -11,6 +17,14 @@ export const router = createBrowserRouter([
       {
         path: "/",
         element: <Home />,
+      },
+      {
+        path: "teach",
+        element: (
+          <Private>
+            <TeachOnMicro />
+          </Private>
+        ),
       },
     ],
   },
@@ -21,5 +35,19 @@ export const router = createBrowserRouter([
   {
     path: "/register",
     element: <Register />,
+  },
+  {
+    path: "dashboard",
+    element: <DashBoard />,
+    children: [
+      {
+        path: "teacher",
+        element: <TeacherRequest />,
+      },
+      {
+        path: "user",
+        element: <Users />,
+      },
+    ],
   },
 ]);
