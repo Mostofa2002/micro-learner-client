@@ -12,6 +12,8 @@ const Google = () => {
         email: res.user?.email,
         name: res.user?.displayName,
         image: res.user?.photoURL,
+        role: "user",
+        status: false,
       };
       axiosPublic.post("/users", userInfo).then((res) => {
         console.log(res.data);

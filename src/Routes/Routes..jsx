@@ -8,6 +8,8 @@ import Private from "./../private/Private";
 import DashBoard from "./../LayOut/DashBoard/DashBoard";
 import TeacherRequest from "../pages/DashBoard/Teacher/TeacherRequest";
 import Users from "./../pages/DashBoard/User/Users";
+import Profile from "./../pages/DashBoard/Profile/Profile";
+import AdminRoute from "./../private/AdminRoute";
 
 export const router = createBrowserRouter([
   {
@@ -46,11 +48,23 @@ export const router = createBrowserRouter([
     children: [
       {
         path: "teacher",
-        element: <TeacherRequest />,
+        element: (
+          <AdminRoute>
+            <TeacherRequest />
+          </AdminRoute>
+        ),
       },
       {
         path: "user",
-        element: <Users />,
+        element: (
+          <AdminRoute>
+            <Users />
+          </AdminRoute>
+        ),
+      },
+      {
+        path: "profile",
+        element: <Profile />,
       },
     ],
   },

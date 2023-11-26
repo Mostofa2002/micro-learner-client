@@ -53,7 +53,7 @@ const Nav = () => {
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1 text-2xl font-medium">
           <li>
-            <a>Home</a>
+            <Link to="/">Home</Link>
           </li>
           <li>
             <a>All Classes</a>
@@ -100,7 +100,7 @@ const Nav = () => {
 
                 <hr className="border-gray-200 " />
 
-                <Link to="/dashboard/teacher">
+                <Link to="/dashboard">
                   <button className="flex px-4 py-3 text-[15px] text-black  hover:bg-blue-300/70 rounded-xl mt-1">
                     <span className="mr-2">
                       <Shop2Icon />

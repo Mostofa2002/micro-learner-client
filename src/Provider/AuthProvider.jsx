@@ -10,7 +10,7 @@ import {
 } from "firebase/auth";
 
 import { auth } from "../config/firebase.config";
-import useAxiosPublic from "../hooks/useAxiosPublic";
+import useAxiosPublic from "./../hooks/useAxiosPublic";
 
 export const AuthContext = createContext(null);
 
