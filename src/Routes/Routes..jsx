@@ -15,6 +15,8 @@ import MyClass from "../pages/DashBoard/Teachers-Dashboard/MyClass";
 import AllClasses from "../pages/DashBoard/AllClasses/AllClasses";
 import TeacherRoute from "./../private/TeacherRoute";
 import Update from "../pages/DashBoard/Teachers-Dashboard/Update";
+import UserClasses from "../pages/Home/Class/UserClasses";
+import Payment from "../pages/payment/Payment";
 
 export const router = createBrowserRouter([
   {
@@ -32,6 +34,15 @@ export const router = createBrowserRouter([
             <TeachOnMicro />
           </Private>
         ),
+      },
+      {
+        path: "user-class",
+        element: (
+          <Private>
+            <UserClasses />
+          </Private>
+        ),
+        loader: () => fetch("http://localhost:5000/users-class"),
       },
     ],
   },
@@ -109,5 +120,11 @@ export const router = createBrowserRouter([
           fetch(`http://localhost:5000/update/${params?.id}`),
       },
     ],
+  },
+  {
+    path: "/payment/:id",
+    element: <Payment></Payment>,
+    loader: ({ params }) =>
+      fetch(`http://localhost:5000/payment/${params?.id}`),
   },
 ]);

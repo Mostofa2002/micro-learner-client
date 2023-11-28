@@ -35,11 +35,13 @@ const Nav = () => {
             className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
           >
             <li>
-              <a>Home</a>
+              <Link to="/">Home</Link>
             </li>
-            <li>
-              <a>All Classes</a>
-            </li>
+            <Link to="/user-class">
+              <li>
+                <a>All Classes</a>
+              </li>
+            </Link>
             <Link to="/teach">
               <li>
                 <a>Teach On Micro</a>
@@ -55,9 +57,11 @@ const Nav = () => {
           <li>
             <Link to="/">Home</Link>
           </li>
-          <li>
-            <a>All Classes</a>
-          </li>
+          <Link to="/user-class">
+            <li>
+              <a>All Classes</a>
+            </li>
+          </Link>
           <Link to="/teach">
             <li>
               <a>Teach On Micro</a>
