@@ -5,7 +5,11 @@ import Swal from "sweetalert2";
 
 const Users = () => {
   const axiosSecure = useAxiosSecure();
-  const { data: users = [], refetch } = useQuery({
+  const {
+    data: users = [],
+    refetch,
+    isLoading,
+  } = useQuery({
     queryKey: ["users"],
     queryFn: async () => {
       const res = await axiosSecure.get("/users");
@@ -29,6 +33,11 @@ const Users = () => {
       }
     });
   };
+
+  if (isLoading) {
+    return <div>loading</div>;
+  }
+
   return (
     <div>
       <div className="flex justify-evenly my-5">
@@ -41,7 +50,7 @@ const Users = () => {
             {/* head */}
             <thead>
               <tr>
-                <th></th>
+                <th>#</th>
                 <th>Image</th>
                 <th>Name</th>
                 <th>Email</th>

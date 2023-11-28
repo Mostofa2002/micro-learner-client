@@ -13,7 +13,7 @@ const Google = () => {
         name: res.user?.displayName,
         image: res.user?.photoURL,
         role: "user",
-        status: false,
+        status: "",
       };
       axiosPublic.post("/users", userInfo).then((res) => {
         console.log(res.data);

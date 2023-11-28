@@ -1,6 +1,9 @@
 const Partners = () => {
   return (
     <div>
+      <h1 className="text-5xl uppercase font-semibold text-center text-gray-800 my-20  lg:text-3xl dark:text-white">
+        Our Partners
+      </h1>
       <div className="flex lg:flex-row flex-col gap-10 items-center justify-center">
         <div className="w-96 my-2">
           <img src="https://i.ibb.co/LnGQMMV/ostad-transparent.png" alt="" />

@@ -2,16 +2,31 @@ import { useForm } from "react-hook-form";
 import useAuth from "../../hooks/useAuth";
 import Swal from "sweetalert2";
 import useAxiosSecure from "./../../hooks/useAxiosSecure";
+import { useQuery } from "@tanstack/react-query";
 
 const TeachOnMicro = () => {
   const { user } = useAuth();
   const axiosSecure = useAxiosSecure();
+  const {
+    data: users = {},
+    isLoading,
+    refetch,
+  } = useQuery({
+    queryKey: ["users"],
+    queryFn: async () => {
+      const res = await axiosSecure.get(`/users-new/${user?.email}`);
+      return res.data;
+    },
+  });
+  console.log(users);
+
   const {
     register,
     handleSubmit,
     formState: { errors },
     reset,
   } = useForm();
+
   const onSubmit = async (data) => {
     const name = user?.displayName;
     const email = user?.email;
@@ -30,6 +45,7 @@ const TeachOnMicro = () => {
     console.log(join.data);
     if (join.data.insertedId) {
       // show success popup
+      refetch();
       reset();
       Swal.fire({
         position: "top-end",
@@ -41,6 +57,9 @@ const TeachOnMicro = () => {
     }
   };
 
+  if (isLoading) {
+    return <div>isLoading</div>;
+  }
   return (
     <div className="w-full max-w-2xl p-6 m-auto mx-auto bg-white rounded-lg shadow-md dark:bg-gray-800">
       <form onSubmit={handleSubmit(onSubmit)} className="mt-6">
@@ -116,12 +135,29 @@ const TeachOnMicro = () => {
         </div>
 
         <div className="mt-6">
-          <button
-            type="submit"
-            className="w-full px-6 py-2.5 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-gray-800 rounded-lg hover:bg-gray-700 focus:outline-none focus:ring focus:ring-gray-300 focus:ring-opacity-50"
-          >
-            Submit for reviews
-          </button>
+          {users.status === "pending" ? (
+            <button
+              disabled={users.status === "pending"}
+              type="submit"
+              className="w-full px-6 py-2.5 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-blue-800 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-50"
+            >
+              Your request Pending
+            </button>
+          ) : users.status === "rejected" ? (
+            <button
+              type="submit"
+              className="w-full px-6 py-2.5 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-red-800 rounded-lg hover:bg-red-700 focus:outline-none focus:ring focus:ring-red-300 focus:ring-opacity-50"
+            >
+              Again Submit
+            </button>
+          ) : (
+            <button
+              type="submit"
+              className="w-full px-6 py-2.5 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-green-800 rounded-lg hover:bg-green-700 focus:outline-none focus:ring focus:ring-green-300 focus:ring-opacity-50"
+            >
+              Submit for Review
+            </button>
+          )}
         </div>
       </form>
     </div>
