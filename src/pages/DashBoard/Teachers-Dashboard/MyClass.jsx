@@ -3,6 +3,7 @@ import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import useAuth from "../../../hooks/useAuth";
 import { DeleteForever, UpdateTwoTone } from "@mui/icons-material";
 import Swal from "sweetalert2";
+import { Link } from "react-router-dom";
 
 const MyClass = () => {
   const axiosSecure = useAxiosSecure();
@@ -92,12 +93,11 @@ const MyClass = () => {
                   <td>{data.description}</td>
                   <td>{data.status}</td>
                   <th>
-                    <button
-                      // onClick={() => handleAccept(data?._id)}
-                      className="btn btn-success btn-sm"
-                    >
-                      <UpdateTwoTone className="text-lg text-white"></UpdateTwoTone>
-                    </button>
+                    <Link to={`/dashboard/update/${data._id}`}>
+                      <button className="btn btn-success btn-sm">
+                        <UpdateTwoTone className="text-lg text-white"></UpdateTwoTone>
+                      </button>
+                    </Link>
                   </th>
                   <th>
                     <button

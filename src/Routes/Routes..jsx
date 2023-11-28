@@ -14,6 +14,7 @@ import AddClass from "../pages/DashBoard/Teachers-Dashboard/AddClass";
 import MyClass from "../pages/DashBoard/Teachers-Dashboard/MyClass";
 import AllClasses from "../pages/DashBoard/AllClasses/AllClasses";
 import TeacherRoute from "./../private/TeacherRoute";
+import Update from "../pages/DashBoard/Teachers-Dashboard/Update";
 
 export const router = createBrowserRouter([
   {
@@ -96,6 +97,16 @@ export const router = createBrowserRouter([
             <MyClass />
           </TeacherRoute>
         ),
+      },
+      {
+        path: "update/:id",
+        element: (
+          <TeacherRoute>
+            <Update />
+          </TeacherRoute>
+        ),
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/update/${params?.id}`),
       },
     ],
   },
