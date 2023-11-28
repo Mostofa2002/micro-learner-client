@@ -1,47 +1,51 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
-import useAuth from "../../../hooks/useAuth";
-import { DeleteForever, UpdateTwoTone } from "@mui/icons-material";
+import { Cancel, CheckCircle } from "@mui/icons-material";
 import Swal from "sweetalert2";
 
-const MyClass = () => {
+const AllClasses = () => {
   const axiosSecure = useAxiosSecure();
-  const { user } = useAuth();
   const {
-    data: data = [],
-    isLoading,
+    data: classes = [],
     refetch,
+    isLoading,
   } = useQuery({
-    queryKey: ["data", user.email],
+    queryKey: ["classes"],
     queryFn: async () => {
-      const res = await axiosSecure.get(`/updated-class/${user.email}`);
+      const res = await axiosSecure.get("/classes");
       return res.data;
     },
   });
-  console.log(data);
+  console.log(classes);
 
-  const handleDelete = (id) => {
-    Swal.fire({
-      title: "Are you sure?",
-      text: "You won't be able to revert this!",
-      icon: "warning",
-      showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
-      confirmButtonText: "Yes, delete it!",
-    }).then((result) => {
-      if (result.isConfirmed) {
-        fetch(`http://localhost:5000/class-delete/${id}`, {
-          method: "DELETE",
-        })
-          .then((res) => res.json())
-          .then((data) => {
-            console.log(data);
-            if (data.deletedCount > 0) {
-              Swal.fire("Deleted!", "Contest has been deleted.", "success");
-            }
-            refetch();
-          });
+  const handleAccept = (id) => {
+    axiosSecure.patch(`/class-accept/${id}`).then((res) => {
+      console.log(res.data);
+      if (res.data.modifiedCount > 0) {
+        refetch();
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: "Class added successfully",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      }
+    });
+  };
+  const handleReject = (id) => {
+    console.log(id);
+    axiosSecure.patch(`/class-reject/${id}`).then((res) => {
+      console.log(res.data);
+      if (res.data.modifiedCount > 0) {
+        refetch();
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: "Rejected",
+          showConfirmButton: false,
+          timer: 1500,
+        });
       }
     });
   };
@@ -58,19 +62,17 @@ const MyClass = () => {
               <tr>
                 <th>#</th>
                 <th>Image</th>
-                <th>Name</th>
-                <th>Email</th>
                 <th>Title</th>
-                <th>Price</th>
+                <th>Email</th>
                 <th>Description</th>
                 <th>Status</th>
-                <th>Update</th>
-                <th>Delete</th>
+                <th>Accept</th>
+                <th>Reject</th>
               </tr>
             </thead>
             <tbody>
               {/* row 1 */}
-              {data.map((data, index) => (
+              {classes.map((data, index) => (
                 <tr key={data._id}>
                   <th>{index + 1}</th>
                   <td>
@@ -85,26 +87,27 @@ const MyClass = () => {
                       </div>
                     </div>
                   </td>
-                  <td>{data.name}</td>
-                  <td>{data.email}</td>
                   <td>{data.title}</td>
-                  <td>{data.price} $</td>
+                  <td>{data.email}</td>
                   <td>{data.description}</td>
+
                   <td>{data.status}</td>
                   <th>
                     <button
-                      // onClick={() => handleAccept(data?._id)}
+                      disabled={data.status === "accepted"}
+                      onClick={() => handleAccept(data?._id)}
                       className="btn btn-success btn-sm"
                     >
-                      <UpdateTwoTone className="text-lg text-white"></UpdateTwoTone>
+                      <CheckCircle className="text-lg text-white"></CheckCircle>
                     </button>
                   </th>
                   <th>
                     <button
-                      onClick={() => handleDelete(data._id)}
+                      disabled={data.status === "rejected"}
+                      onClick={() => handleReject(data._id)}
                       className="btn btn-error btn-sm"
                     >
-                      <DeleteForever className="text-lg text-white"></DeleteForever>
+                      <Cancel className="text-lg text-white"></Cancel>
                     </button>
                   </th>
                 </tr>
@@ -117,4 +120,4 @@ const MyClass = () => {
   );
 };
 
-export default MyClass;
+export default AllClasses;

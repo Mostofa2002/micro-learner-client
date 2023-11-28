@@ -6,7 +6,7 @@ const Profile = () => {
   const axiosSecure = useAxiosSecure();
   const { user } = useAuth();
 
-  const { data: data = {} } = useQuery({
+  const { data: data = {}, isLoading } = useQuery({
     queryKey: ["users"],
 
     queryFn: async () => {
@@ -15,6 +15,9 @@ const Profile = () => {
     },
   });
   // console.log(data);
+  if (isLoading) {
+    return <progress className="progress w-56"></progress>;
+  }
   return (
     <div className="flex justify-center items-center my-20">
       <div className="card w-96 bg-base-100 shadow-xl">

@@ -35,7 +35,7 @@ const Users = () => {
   };
 
   if (isLoading) {
-    return <div>loading</div>;
+    return <progress className="progress w-56"></progress>;
   }
 
   return (

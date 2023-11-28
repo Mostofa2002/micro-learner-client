@@ -34,7 +34,7 @@ const DashBoard = () => {
                 <NavLink to="/dashboard/profile">Profile</NavLink>
               </li>
               <li>
-                <NavLink to="/dashboard/allClass">All Classes</NavLink>
+                <NavLink to="/dashboard/adminAllClass">All Classes</NavLink>
               </li>
             </>
           )}

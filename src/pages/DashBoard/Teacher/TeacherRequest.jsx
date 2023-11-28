@@ -5,7 +5,11 @@ import Swal from "sweetalert2";
 
 const TeacherRequest = () => {
   const axiosSecure = useAxiosSecure();
-  const { data: data = [], refetch } = useQuery({
+  const {
+    data: data = [],
+    refetch,
+    isLoading,
+  } = useQuery({
     queryKey: ["request"],
     queryFn: async () => {
       const res = await axiosSecure.get("/requests");
@@ -46,6 +50,11 @@ const TeacherRequest = () => {
       }
     });
   };
+
+  if (isLoading) {
+    return <progress className="progress w-56"></progress>;
+  }
+
   return (
     <div>
       <div className="overflow-x-auto">
