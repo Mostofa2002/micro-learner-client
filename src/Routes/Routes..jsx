@@ -10,6 +10,8 @@ import TeacherRequest from "../pages/DashBoard/Teacher/TeacherRequest";
 import Users from "./../pages/DashBoard/User/Users";
 import Profile from "./../pages/DashBoard/Profile/Profile";
 import AdminRoute from "./../private/AdminRoute";
+import AddClass from "../pages/DashBoard/Teachers-Dashboard/AddClass";
+import MyClass from "../pages/DashBoard/Teachers-Dashboard/MyClass";
 
 export const router = createBrowserRouter([
   {
@@ -62,9 +64,20 @@ export const router = createBrowserRouter([
           </AdminRoute>
         ),
       },
+      // global routes
       {
         path: "profile",
         element: <Profile />,
+      },
+
+      // teacher routes
+      {
+        path: "addClass",
+        element: <AddClass></AddClass>,
+      },
+      {
+        path: "myClass-teacher",
+        element: <MyClass />,
       },
     ],
   },

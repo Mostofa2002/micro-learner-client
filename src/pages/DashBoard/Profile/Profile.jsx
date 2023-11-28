@@ -5,13 +5,7 @@ import { useQuery } from "@tanstack/react-query";
 const Profile = () => {
   const axiosSecure = useAxiosSecure();
   const { user } = useAuth();
-  //   const [data, setData] = useState([]);
-  //   useEffect(() => {
-  //     axiosSecure
-  //       .get(`profile?email=${user?.email}`)
-  //       .then((res) => setData(res.data));
-  //   }, [user.email, axiosSecure]);
-  //   console.log(data);
+
   const { data: data = {} } = useQuery({
     queryKey: ["users"],
 
@@ -20,7 +14,7 @@ const Profile = () => {
       return res.data;
     },
   });
-  console.log(data);
+  // console.log(data);
   return (
     <div className="flex justify-center items-center my-20">
       <div className="card w-96 bg-base-100 shadow-xl">
