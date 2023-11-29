@@ -1,6 +1,6 @@
 const Partners = () => {
   return (
-    <div>
+    <div data-aos="flip-right">
       <h1 className="text-5xl uppercase font-semibold text-center text-gray-800 my-20  lg:text-3xl dark:text-white">
         Our Partners
       </h1>

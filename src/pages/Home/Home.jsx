@@ -2,19 +2,19 @@ import Banner from "./Banner/Banner";
 import BecomeTeacher from "./Become-Teacher/BecomeTeacher";
 import HighClass from "./HighClass";
 import Partners from "./Partners/Partners";
+import Pricing from "./Pricing/Pricing";
 import Team from "./Team/Team";
+import Stats from "./stats/Stats";
 
 const Home = () => {
-  // const isLoading = true;
-  // if (isLoading) {
-  //   return <progress className="progress w-56"></progress>;
-  // }
   return (
     <div>
       <Banner />
       <Partners />
       <HighClass />
       <BecomeTeacher />
+      <Stats />
+      <Pricing />
       <Team />
     </div>
   );

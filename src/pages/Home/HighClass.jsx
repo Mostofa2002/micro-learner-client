@@ -11,19 +11,19 @@ const HighClass = () => {
       return res.data;
     },
   });
-  console.log(Data);
+
   if (isLoading) {
     return <progress className="progress w-56"></progress>;
   }
 
   return (
-    <div className="my-14">
+    <div data-aos="flip-right" className="my-14">
       <h1 className="text-center text-5xl font-bold">
         Our Most Enrolled Classes
       </h1>
-      <div className="grid lg:grid-cols-3 md:grid-cols-2 gap-8 mt-14">
+      <div className="grid lg:grid-cols-3 md:grid-cols-1 md:ml-44  gap-10  mt-14">
         {Data.map((data) => (
-          <div key={data} className="card w-96 bg-base-200 shadow-xl">
+          <div key={data} className="card w-96 bg-base-300 shadow-xl">
             <figure>
               <img className="w-full h-[250px]" src={data.image} alt="Shoes" />
             </figure>

@@ -5,7 +5,7 @@ const UserClasses = () => {
   const Data = data.filter((item) => item.status === "accepted");
 
   return (
-    <div className="grid lg:grid-cols-3 gap-8 mt-10">
+    <div className="grid lg:grid-cols-3 md:grid-cols-2 gap-8 mt-10">
       {Data.map((data) => (
         <div key={data} className="card w-96 bg-base-200 shadow-xl">
           <figure>

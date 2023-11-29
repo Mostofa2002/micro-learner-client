@@ -1,6 +1,6 @@
 const Team = () => {
   return (
-    <div>
+    <div data-aos="flip-right">
       <section className="bg-white dark:bg-gray-900">
         <div className="container px-6 py-10 mx-auto">
           <h1 className="text-2xl font-semibold text-center text-gray-800 capitalize lg:text-3xl dark:text-white">
@@ -89,7 +89,7 @@ const Team = () => {
               </h1>
 
               <p className="mt-2 text-gray-500 capitalize dark:text-gray-300 group-hover:text-gray-300">
-                Lead Developer
+                Project Manager
               </p>
 
               <div className="flex mt-3 -mx-2">
@@ -152,7 +152,7 @@ const Team = () => {
               </h1>
 
               <p className="mt-2 text-gray-500 capitalize dark:text-gray-300 group-hover:text-gray-300">
-                Lead designer
+                HR
               </p>
 
               <div className="flex mt-3 -mx-2">

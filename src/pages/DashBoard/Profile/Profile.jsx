@@ -8,7 +8,6 @@ const Profile = () => {
 
   const { data: data = {}, isLoading } = useQuery({
     queryKey: ["users"],
-
     queryFn: async () => {
       const res = await axiosSecure.get(`profile?email=${user?.email}`);
       return res.data;

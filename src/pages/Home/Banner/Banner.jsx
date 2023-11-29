@@ -3,7 +3,7 @@ import { Carousel } from "react-responsive-carousel";
 const Banner = () => {
   return (
     <Carousel>
-      <div>
+      <div data-aos="flip-right">
         <img src="https://store.hp.com/app/assets/images/uploads/prod/top-25-free-online-courses1595277475105838.jpg" />
       </div>
       <div>

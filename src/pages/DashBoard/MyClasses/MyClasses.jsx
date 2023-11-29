@@ -19,9 +19,9 @@ const MyClasses = () => {
 
   return (
     <div className="lg:max-w-5xl mx-auto">
-      <div className="grid lg:grid-cols-2 md:grid-cols-1 md:ml-32 gap-8 mt-14">
+      <div className="grid lg:grid-cols-2 md:grid-cols-1 md:ml-56 ml-20 gap-8 mt-14">
         {Data.map((data) => (
-          <div key={data} className="card w-96 bg-base-200 shadow-xl">
+          <div key={data} className="card lg:w-96  w-72 bg-base-300 shadow-xl">
             <figure>
               <img className="w-full h-[250px]" src={data.image} alt="Shoes" />
             </figure>

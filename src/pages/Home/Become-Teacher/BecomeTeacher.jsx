@@ -2,12 +2,12 @@ import { Link } from "react-router-dom";
 
 const BecomeTeacher = () => {
   return (
-    <div>
+    <div data-aos="flip-right">
       <div className="hero min-h-screen ">
         <div className="hero-content flex-col lg:flex-row">
           <img
             src="https://www.usnews.com/object/image/00000142-9263-d33c-abc6-ff77dfba0024/37985FE_DA_20130207_onlinemistakes-slide8.jpg?update-time=1421878595148&size=responsive640"
-            className="max-w-lg rounded-lg shadow-2xl"
+            className="lg:max-w-lg rounded-lg shadow-2xl"
           />
           <div className="lg:ml-48">
             <h1 className="text-5xl font-bold">
