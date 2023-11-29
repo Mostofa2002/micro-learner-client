@@ -17,6 +17,7 @@ import TeacherRoute from "./../private/TeacherRoute";
 import Update from "../pages/DashBoard/Teachers-Dashboard/Update";
 import UserClasses from "../pages/Home/Class/UserClasses";
 import Payment from "../pages/payment/Payment";
+import MyClasses from "./../pages/DashBoard/MyClasses/MyClasses";
 
 export const router = createBrowserRouter([
   {
@@ -90,6 +91,10 @@ export const router = createBrowserRouter([
       {
         path: "profile",
         element: <Profile />,
+      },
+      {
+        path: "myClass",
+        element: <MyClasses />,
       },
 
       // teacher routes

@@ -39,6 +39,7 @@ const AddClass = () => {
       price: data.price,
       description: data.description,
       status: "pending",
+      enroll: 0,
     };
     console.log(add);
     const join = await axiosSecure.post("/add-class", add);

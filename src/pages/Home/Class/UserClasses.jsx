@@ -5,7 +5,7 @@ const UserClasses = () => {
   const Data = data.filter((item) => item.status === "accepted");
 
   return (
-    <div className="grid lg:grid-cols-3 gap-8">
+    <div className="grid lg:grid-cols-3 gap-8 mt-10">
       {Data.map((data) => (
         <div key={data} className="card w-96 bg-base-200 shadow-xl">
           <figure>
@@ -13,13 +13,16 @@ const UserClasses = () => {
           </figure>
 
           <div className="card-body">
-            <h2 className="card-title"> Title: {data.title} $</h2>
-            <p>Name: {data.name}</p>
-            <p>Price: {data.price}</p>
+            <h2 className="card-title"> Title: {data.title} </h2>
+            <p>Teacher Name : {data.name}</p>
+            <p>Price: {data.price} $</p>
             <p> Short Description: {data.description}</p>
+            <p> Total Enroll: {data.enroll}</p>
             <Link to={`/payment/${data._id}`}>
               <div className="card-actions justify-center mt-3">
-                <button className="btn btn-primary w-1/2">Enroll</button>
+                <button className="btn btn-info text-white w-1/2">
+                  Enroll Now
+                </button>
               </div>
             </Link>
           </div>
