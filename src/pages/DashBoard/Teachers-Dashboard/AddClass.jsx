@@ -7,17 +7,7 @@ import useAuth from "../../../hooks/useAuth";
 const AddClass = () => {
   const { user } = useAuth();
   const axiosSecure = useAxiosSecure();
-  // const {
-  //   data: users = {},
-  //   isLoading,
-  //   refetch,
-  // } = useQuery({
-  //   queryKey: ["users"],
-  //   queryFn: async () => {
-  //     const res = await axiosSecure.get(`/users-neww/${user?.email}`);
-  //     return res.data;
-  //   },
-  // });
+
   const users = true;
   console.log(users);
 

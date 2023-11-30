@@ -19,7 +19,7 @@ const MyClass = () => {
       return res.data;
     },
   });
-  console.log(data);
+  // console.log(data);
 
   const handleDelete = (id) => {
     Swal.fire({
@@ -32,14 +32,14 @@ const MyClass = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/class-delete/${id}`, {
+        fetch(`https://micro-server.vercel.app/class-delete/${id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())
           .then((data) => {
             console.log(data);
             if (data.deletedCount > 0) {
-              Swal.fire("Deleted!", "Contest has been deleted.", "success");
+              Swal.fire("Deleted!", "Class has been deleted.", "success");
             }
             refetch();
           });

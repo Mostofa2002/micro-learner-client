@@ -4,11 +4,11 @@
 
 ## Client Side
 
-## [ Project Live Demo](https://micro-donation-40d62.web.app)
+## [ Project Live Demo](https://micro-learner.web.app)
 
 ## Server Side
 
-## [ Project Live Demo](http://localhost:5000)
+## [ Project Live Demo](https://micro-server.vercel.app)
 
 # Project features
 

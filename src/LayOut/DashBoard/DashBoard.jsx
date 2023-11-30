@@ -18,7 +18,7 @@ const DashBoard = () => {
               htmlFor="my-drawer-2"
               className="btn btn-primary drawer-button lg:hidden"
             >
-              Open drawer
+              Open DashBoard
             </label>
           </div>
         </div>

@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 const HighClass = () => {
   const axiosPublic = useAxiosPublic();
   const { data: Data = [], isLoading } = useQuery({
-    queryKey: ["users"],
+    queryKey: ["Data"],
     queryFn: async () => {
       const res = await axiosPublic.get("/highlighted-class");
       return res.data;
