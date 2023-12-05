@@ -3,9 +3,10 @@ import useAuth from "../../hooks/useAuth";
 import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
 import CheckOutPayment from "./CheckOutPayment";
-const stripePromise = loadStripe(
-  "pk_test_51OHVkoKz9GeGBed5JgT22ILGoL1zPRcs6KAkrWwn0D7qNhuY7lW0aESImtDPZ3XSQe99kECl0nS8Iy6gdIXASy6o002y4hje0E"
-);
+
+const stripePromise = loadStripe(import.meta.env.VITE_PAY_API);
+console.log(import.meta.env.VITE_PAY_API);
+
 const Payment = () => {
   const { loading } = useAuth();
   const data = useLoaderData();

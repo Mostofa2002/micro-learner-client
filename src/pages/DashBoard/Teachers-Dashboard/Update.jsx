@@ -20,7 +20,7 @@ const Update = () => {
     console.log(addUpdate);
 
     // form to database
-    fetch(`https://micro-server.vercel.app/updated/${_id}`, {
+    fetch(`http://localhost:5000/updated/${_id}`, {
       method: "PUT",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(addUpdate),

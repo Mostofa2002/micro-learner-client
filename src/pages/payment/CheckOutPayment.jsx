@@ -17,7 +17,7 @@ const CheckOutPayment = ({ data }) => {
   const axiosSecure = useAxiosSecure();
   const { user } = useAuth();
   useEffect(() => {
-    fetch("https://micro-server.vercel.app/payment-intent", {
+    fetch("http://localhost:5000/payment-intent", {
       method: "POST",
       headers: {
         "content-type": "application/json",

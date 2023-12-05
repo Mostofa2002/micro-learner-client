@@ -43,7 +43,7 @@ export const router = createBrowserRouter([
             <UserClasses />
           </Private>
         ),
-        loader: () => fetch("https://micro-server.vercel.app/users-class"),
+        loader: () => fetch("http://localhost:5000/users-class"),
       },
     ],
   },
@@ -122,7 +122,7 @@ export const router = createBrowserRouter([
           </TeacherRoute>
         ),
         loader: ({ params }) =>
-          fetch(`https://micro-server.vercel.app/update/${params?.id}`),
+          fetch(`http://localhost:5000/update/${params?.id}`),
       },
     ],
   },
@@ -130,6 +130,6 @@ export const router = createBrowserRouter([
     path: "/payment/:id",
     element: <Payment></Payment>,
     loader: ({ params }) =>
-      fetch(`https://micro-server.vercel.app/payment/${params?.id}`),
+      fetch(`http://localhost:5000/payment/${params?.id}`),
   },
 ]);

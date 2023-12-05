@@ -32,7 +32,7 @@ const MyClass = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`https://micro-server.vercel.app/class-delete/${id}`, {
+        fetch(`http://localhost:5000/class-delete/${id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())
